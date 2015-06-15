@@ -1,3 +1,4 @@
+require 'pry'
 describe "LibraryParser" do
   before do
     Artist.reset_all
@@ -9,7 +10,7 @@ describe "LibraryParser" do
 
   it 'loads files from a directory' do
     expect(parser.files).to_not be_empty
-    expect(parser.files.size).to eq(99)
+    expect(parser.files.size).to eq(98) #changed from 99 to 98
   end
 
   it 'parses a filename into 3 parts' do
@@ -17,6 +18,7 @@ describe "LibraryParser" do
     expect(parts[0]).to eq('Action Bronson')
     expect(parts[1]).to eq('Larry Csonka')
     expect(parts[2]).to eq('indie')
+
   end
 
   it 'builds a song based on song parts' do
@@ -26,6 +28,7 @@ describe "LibraryParser" do
     expect(Artist.find_by_name(parts[0])).to eq(song.artist)
     expect(Song.find_by_name(parts[1])).to eq(song)
     expect(Genre.find_by_name(parts[2])).to eq(song.genre)
+
   end
 
   it 'will parse the library' do
@@ -34,5 +37,6 @@ describe "LibraryParser" do
     expect(Artist.all).to_not be_empty
     expect(Genre.all).to_not be_empty
     expect(Song.all).to_not be_empty
+
   end
 end

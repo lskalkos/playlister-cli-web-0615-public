@@ -42,7 +42,7 @@ class PlaylisterCLI
 
   def list
     Song.all.each_with_index do |song,i|
-      puts "#{i+1}. #{song}"
+      puts "#{i+1}. #{song.name}"
     end
   end
 
